@@ -23,6 +23,42 @@
         {
             <GameLogger logmessage=@s></GameLogger>
         }
+        </div>
+}
+
+@if (ShowHelp)
+{
+    <div style="position:fixed; inset:0; background:rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; z-index:1000;">
+        <div style="background:white; padding:1rem; max-width:800px; width:90%; border-radius:6px; position:relative;">
+            <button class="btn btn-sm btn-link" style="position:absolute; right:8px; top:8px;" @onclick="CloseHelp">Zavrieť</button>
+            <h3>Návod na hru</h3>
+            <p>Vitajte v hre Scrabble. Tu sú základné pravidlá a tipy, ktoré vám pomôžu začať:</p>
+
+            <h4>Základy</h4>
+            <ul>
+                <li>Tvorte slová horizontálne (vpravo) alebo vertikálne (nadol) tak, aby boli zmysluplné.</li>
+                <li>Na každom ťahu môžete položiť 1 alebo viac písmen z vášho stojanu (rack).</li>
+                <li>Ak použijete všetky písmená (7), získate bonus +50 bodov (bingo).</li>
+            </ul>
+
+            <h4>Skórovanie</h4>
+            <ul>
+                <li>Každé písmeno má bodovú hodnotu. Hodnoty nájdete v nastavení hry.</li>
+                <li>Speciálne polia na doske násobia body písmen (DL/TL) alebo celého slova (DW/TW).</li>
+            </ul>
+
+            <h4>Žolík</h4>
+            <ul>
+                <li>Žolík je zastúpený znakom '#'. Nemá žiadnu bodovú hodnotu a môže zastúpiť ľubovoľné písmeno.</li>
+            </ul>
+
+            <h4>Ovládanie</h4>
+            <ul>
+                <li>Tlačidlo "Play" potvrdí položené písmená.</li>
+                <li>Tlačidlo "Swap" vymení označené písmená za nové z vrecka (ak sú dostupné).</li>
+                <li>Tlačidlo "Hint" navrhne možné ťahy (vyžaduje povolený slovník).</li>
+            </ul>
+        </div>
     </div>
 }
 
@@ -79,6 +115,7 @@
         <button @onclick=Valid>Valid</button>
         <button @onclick=InValid>InValid</button>
         <button @onclick=NewGame>NewGame</button>
+          <button @onclick="() => ShowHelp = true">Návod na hru</button>
         <!--
         <button @onclick=Exit>Exit</button>
         <button @onclick=Test>Test</button>
@@ -150,11 +187,13 @@
     public string boardIni { get; set; } = string.Empty;
 
     public List<BoardTile> lastTilesInPlay = new List<BoardTile>();
+    
+    public bool ShowHelp { get; set; } = false;
 
 
     protected override async Task OnInitializedAsync()
     {
-
+       
         int count = 0;
         //Logger.LogWarning("Vstup z OnInitializedAsync");
         gameLog = new GameLog();
@@ -349,6 +388,12 @@
         PlayerTwoSolution();
         playerManager.SwapCurrentPlayer();
     }
+
+        private void CloseHelp()
+    {
+        ShowHelp = false;
+    }
+
 
     private void Play()
     {

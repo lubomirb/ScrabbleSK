@@ -1,0 +1,36 @@
+@page "/help"
+@using Microsoft.AspNetCore.Components
+<PageTitle>Návod na hru</PageTitle>
+
+<h3>Návod na hru</h3>
+
+<p>Vitajte v hre Scrabble. Tu sú základné pravidlá a tipy, ktoré vám pomôžu začať:</p>
+
+<h4>Základy</h4>
+<ul>
+    <li>Tvorte slová horizontálne (vpravo) alebo vertikálne (nadol) tak, aby boli zmysluplné.</li>
+    <li>Na každom ťahu môžete položiť 1 alebo viac písmen z vášho stojanu (rack).</li>
+    <li>Ak použijete všetky písmená (7), získate bonus +50 bodov (bingo).</li>
+</ul>
+
+<h4>Skórovanie</h4>
+<ul>
+    <li>Každé písmeno má bodovú hodnotu. Hodnoty nájdete v nastavení hry.</li>
+    <li>Speciálne polia na doske násobia body písmen (DL/TL) alebo celého slova (DW/TW).</li>
+</ul>
+
+<h4>Žolík</h4>
+<ul>
+    <li>Žolík je zastúpený znakom '#'. Nemá žiadnu bodovú hodnotu a môže zastúpiť ľubovoľné písmeno.</li>
+</ul>
+
+<h4>Ovládanie</h4>
+<ul>
+    <li>Tlačidlo "Play" potvrdí položené písmená.</li>
+    <li>Tlačidlo "Swap" vymení označené písmená za nové z vrecka (ak sú dostupné).</li>
+    <li>Tlačidlo "Hint" navrhne možné ťahy (vyžaduje povolený slovník).</li>
+</ul>
+
+<p>Pre viac detailov skontrolujte sekciu nápovedy v aplikácii alebo otvorené súbory so slovníkom v priečinku <code>wwwroot/SK</code>.</p>
+
+<NavLink class="btn btn-primary" href="/">Späť na hru</NavLink>
