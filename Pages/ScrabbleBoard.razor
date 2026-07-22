@@ -5,6 +5,7 @@
 @using System.IO;
 @using System.Reflection;
 @using Microsoft.AspNetCore.Components;
+@using Microsoft.AspNetCore.Components.Web
 @using ScrabbleSK.Data
 @using ScrabbleSK.GameLog
 @using ScrabbleSK.Pages
@@ -71,7 +72,7 @@
 
 <div class="game" id="game">
     <div class="game-element-container">
-        <div class="board">
+    <div class="board" tabindex="0" @onkeydown="OnKeyDown" @ref="boardDiv">
             @if (boardManager?.BoardTiles != null)
             {
                 @for (int x = 0; x < BoardManager.BOARD_WIDTH; x++)
@@ -195,7 +196,33 @@
 
     public List<BoardTile> lastTilesInPlay = new List<BoardTile>();
     
-    public bool ShowHelp { get; set; } = false;
+    public ElementReference boardDiv;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                await boardDiv.FocusAsync();
+            }
+            catch
+            {
+                // ignore if focus isn't available yet
+            }
+        }
+    }
+
+    private async Task OnKeyDown(KeyboardEventArgs e)
+    {
+        if (e.CtrlKey && (e.Key == "n" || e.Key == "N"))
+        {
+            Hint();
+        }
+        await Task.CompletedTask;
+    }
+
+    public bool ShowHelp { get; set; }
 
 
     protected override async Task OnInitializedAsync()
