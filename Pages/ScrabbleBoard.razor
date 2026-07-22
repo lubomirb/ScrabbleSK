@@ -72,7 +72,7 @@
 
 <div class="game" id="game">
     <div class="game-element-container">
-    <div class="board" tabindex="0" @onkeydown="OnKeyDown" @ref="boardDiv">
+    <div class="board" tabindex="0" @onkeydown="OnKeyDown" @onkeydown:preventDefault="true" @onkeydown:stopPropagation="true" @ref="boardDiv">
             @if (boardManager?.BoardTiles != null)
             {
                 @for (int x = 0; x < BoardManager.BOARD_WIDTH; x++)
@@ -119,12 +119,12 @@
         <button class="@BtnColor" @onclick=Play>Hraj @PlayMessage</button>
         <button @onclick=Pass>Pas</button>
         <button @onclick=Swap>Vymeň</button>
-        <button @onclick=Hint>Nápoveď</button>
         <button @onclick=Valid>Platné</button>
         <button @onclick=InValid>Neplatné</button>
         <button @onclick=NewGame>Nová hra</button>
         <button @onclick="() => ShowHelp = true">Návod na hru</button>
         <!--
+        <button @onclick=Hint>Nápoveď</button>
         <button @onclick=Exit>Exit</button>
         <button @onclick=Test>Test</button>
         -->
@@ -215,7 +215,8 @@
 
     private async Task OnKeyDown(KeyboardEventArgs e)
     {
-        if (e.CtrlKey && (e.Key == "n" || e.Key == "N"))
+        // Trigger Hint on Ctrl + . (Ctrl + period)
+        if (e.CtrlKey && e.Key == ".")
         {
             Hint();
         }
