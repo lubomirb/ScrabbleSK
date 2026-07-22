@@ -57,13 +57,13 @@
 
         <h4>Ovládanie</h4>
         <ul>
-            <li>Tlačidlo "Play" potvrdí položené písmená.</li>
-            <li>Tlačidlo "Swap" vymení označené písmená za nové z vrecka (ak sú dostupné).</li>
-            <li>Tlačidlo "Valid" ak hráč H1 (Ty) vyloží slovo ktoré sa nenachádza v programovej databáze slov , ale je v slovníku SSJ.</li>
-            <li>Tlačidlo "InValid" ak hráč H2 (Matej) vygeneruje slovo ktoré nie je v SSJ. hráč H1 odmietne zahrané slovo. H2 zahrá nové slovo.</li>
-            <li>Tlačidlo "NewGame"  okamžite sa začne nová hra (bez načítania databázy slov).</li>
-            <li>Tlačidlo "Joker" pred umiestnením # na dosku vyberieme z kombo boxu písmeno, ktorým chceme # nahradiť.</li>
-            <li>Tlačidlo "Help" zobrazí tento návod.</li>
+            <li>Tlačidlo "Hraj" potvrdí položené písmená.</li>
+            <li>Tlačidlo "Vymeň" vymení označené písmená za nové z vrecka (ak sú dostupné).</li>
+            <li>Tlačidlo "Platné" ak hráč H1 (Ty) vyloží slovo ktoré sa nenachádza v programovej databáze slov , ale je v slovníku SSJ.</li>
+            <li>Tlačidlo "Neplatné" ak hráč H2 (Matej) vygeneruje slovo ktoré nie je v SSJ. hráč H1 odmietne zahrané slovo. H2 zahrá nové slovo.</li>
+            <li>Tlačidlo "Nová hra"  okamžite sa začne nová hra (bez načítania databázy slov).</li>
+            <li>Tlačidlo "Žolík" pred umiestnením # na dosku vyberieme z kombo boxu písmeno, ktorým chceme # nahradiť.</li>
+            <li>Tlačidlo "Návod na hru" zobrazí tento návod.</li>
         </ul>
     </div>
 </div>  
@@ -115,14 +115,14 @@
     </div>
 
     <div class="buttons mt-4 mb-2">
-        <button class="@BtnColor" @onclick=Play>Play @PlayMessage</button>
-        <button @onclick=Pass>Pass</button>
-        <button @onclick=Swap>Swap</button>
-        <button @onclick=Hint>Hint</button>
-        <button @onclick=Valid>Valid</button>
-        <button @onclick=InValid>InValid</button>
-        <button @onclick=NewGame>NewGame</button>
-          <button @onclick="() => ShowHelp = true">Návod na hru</button>
+        <button class="@BtnColor" @onclick=Play>Hraj @PlayMessage</button>
+        <button @onclick=Pass>Pas</button>
+        <button @onclick=Swap>Vymeň</button>
+        <button @onclick=Hint>Nápoveď</button>
+        <button @onclick=Valid>Platné</button>
+        <button @onclick=InValid>Neplatné</button>
+        <button @onclick=NewGame>Nová hra</button>
+        <button @onclick="() => ShowHelp = true">Návod na hru</button>
         <!--
         <button @onclick=Exit>Exit</button>
         <button @onclick=Test>Test</button>
