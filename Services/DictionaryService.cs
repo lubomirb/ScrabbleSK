@@ -18,7 +18,8 @@ public class DictionaryService
         if (_cachedWords is not null)
             return _cachedWords;
 
-        var url = "https://lubomirb.github.io/Slovniky/SK/SK_2to5.txt";
+        //var url = "https://lubomirb.github.io/Slovniky/SK/SK_2to5.txt";
+        var url = "https://lubomirb.github.io/Slovniky/SK/slovnik.txt";
         var text = await _http.GetStringAsync(url);
 
         _cachedWords = text
