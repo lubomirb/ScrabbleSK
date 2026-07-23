@@ -1,4 +1,11 @@
 ﻿@inherits LayoutComponentBase
+@inject ScrabbleSK.Services.VersionService VersionService
 
-@Body
+<div class="app-body">
+    @Body
+</div>
+
+<footer style="font-size:0.9rem; padding:0.5rem; text-align:right; color:var(--bs-body-color); opacity:0.7;">
+    @($"v{VersionService.Version}")
+</footer>
 
